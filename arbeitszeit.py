@@ -97,3 +97,12 @@ if not df_entries.empty:
                 df_entries.drop(index, inplace=True)
                 save_data(df_entries, filename)
                 st.rerun()
+
+# Speichern der CSV
+csv_data = df_entries.to_csv(index=False).encode('utf-8')
+st.download_button(
+    label="📥 Aktuelle CSV-Daten herunterladen",
+    data=csv_data,
+    file_name=filename,
+    mime='text/csv',
+)
